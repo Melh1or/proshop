@@ -1,8 +1,9 @@
 {
-  "name": "backend",
+  "name": "proshop",
   "version": "1.0.0",
   "description": "MERN",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
