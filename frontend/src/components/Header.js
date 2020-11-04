@@ -17,13 +17,13 @@ const Header = () => {
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart" />
-                  Home
+                  Cart
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/login">
                 <Nav.Link>
                   <i className="fas fa-user" />
-                  Link
+                  Sign In
                 </Nav.Link>
               </LinkContainer>
             </Nav>
