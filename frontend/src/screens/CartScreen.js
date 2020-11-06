@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap";
 
 import Message from "../components/Message";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 
 const CartScreen = ({ match, location, history }) => {
   const dispatch = useDispatch();
@@ -16,13 +16,13 @@ const CartScreen = ({ match, location, history }) => {
   const { cartItems } = cart;
 
   const removeFromCartHandler = (id) => {
-    console.log('remove');
-  }
+    dispatch(removeFromCart(id));
+  };
 
   const checkoutHandler = () => {
-    console.log('checkout');
-    history.push('/login?redirect=shipping')
-  }
+    console.log("checkout");
+    history.push("/login?redirect=shipping");
+  };
 
   useEffect(() => {
     if (productId) {
@@ -74,7 +74,7 @@ const CartScreen = ({ match, location, history }) => {
                 </Row>
               </ListGroup.Item>
             ))}
-            </ListGroup>
+          </ListGroup>
         }
       </Col>
       <Col md={4}>
@@ -83,9 +83,9 @@ const CartScreen = ({ match, location, history }) => {
             <ListGroup.Item>
               <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
               ${cartItems
-                .reduce((acc, item) => acc + item.qty * item.price, 0)
-                .toFixed(2)
-              }
+              .reduce((acc, item) => acc + item.qty * item.price, 0)
+              .toFixed(2)
+            }
             </ListGroup.Item>
             <ListGroup.Item>
               <Button
