@@ -8,7 +8,10 @@ import {
   USER_REGISTER_SUCCESS,
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
-  USER_DETAILS_SUCCESS
+  USER_DETAILS_SUCCESS,
+  USER_UPDATE_PROFILE_FAIL,
+  USER_UPDATE_PROFILE_REQUEST,
+  USER_UPDATE_PROFILE_SUCCESS
 } from "../constants/userConstants";
 
 export const userLoginReducer = (state = {}, { type, payload }) => {
@@ -74,8 +77,28 @@ export const userDetailsReducer = (state = { user: {} }, { type, payload }) => {
         loading: false,
         error: payload
       };
-    case USER_LOGOUT:
-      return {};
+    default:
+      return state;
+  }
+};
+
+export const userUpdateProfileReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case USER_UPDATE_PROFILE_REQUEST:
+      return {
+        loading: true
+      };
+    case USER_UPDATE_PROFILE_SUCCESS:
+      return {
+        loading: false,
+        userInfo: payload,
+        success: true
+      };
+    case USER_UPDATE_PROFILE_FAIL:
+      return {
+        loading: false,
+        error: payload
+      };
     default:
       return state;
   }
